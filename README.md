@@ -10,12 +10,13 @@ Install the `altair-graphql-plugin-gist-sync` plugin from Avaiable Plugins > Alt
 
 1. Create a [personal access token](https://github.com/settings/tokens) to your GitHub account, with `gist` scope/permission.
 
+![image](https://user-images.githubusercontent.com/38396158/145697965-3f6e6a04-e946-43eb-9353-b08c589caef7.png)
+
 2. Go to Altair Graphql Client, click on Gist Sync tab:
-![Plugin Screenshot](/docs/screenshot.jpg)
+
+![image](https://user-images.githubusercontent.com/38396158/145697934-10a4e019-1bf4-4524-be2e-77a01beed5be.png)
 
 3. Filling with Gist API Key (generated on step 1), select a existent Gist or select "Create new..." to create a new Gist.
-
-![Configuration Plugin Screenshot](/docs/screenshot-configuration.png)
 
 ## Usage
 
