@@ -9,7 +9,7 @@
     "url": "https://github.com/boydaihungst/altair-graphql-plugin-gist-sync"
   },
   "bugs": {
-    "url": ""
+    "url": "https://github.com/boydaihungst/altair-graphql-plugin-gist-sync/issues"
   },
   "scripts": {
     "serve": "vue-cli-service serve",

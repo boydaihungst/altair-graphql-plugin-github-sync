@@ -1,8 +1,6 @@
-
 export enum SyncProviders {
   GitHub = 'github',
 }
-
 
 export const STORE_KEY_API_KEY = 'gist-sync:api-key';
 
