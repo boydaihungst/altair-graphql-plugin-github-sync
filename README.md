@@ -1,3 +1,7 @@
+[![Node.js Package](https://github.com/boydaihungst/altair-graphql-plugin-gist-sync/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/boydaihungst/altair-graphql-plugin-gist-sync/actions/workflows/npm-publish.yml)
+
+[![NPM](https://nodei.co/npm/altair-graphql-plugin-gist-sync.png?compact=true)](https://npmjs.org/package/altair-graphql-plugin-gist-sync)
+
 # Altair Graphql Client Gist Sync
 
 This is a plugin for [Altair Graphql Client](https://altair.sirmuel.design) that allows users sync collections with gist of GitHub.
