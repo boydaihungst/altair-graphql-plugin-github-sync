@@ -1,14 +1,14 @@
-# Altair Graphql Client Gist Sync
+# Altair Graphql Client github Gist Sync
 
-[![Node.js Package](https://github.com/boydaihungst/altair-graphql-plugin-gist-sync/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/boydaihungst/altair-graphql-plugin-gist-sync/actions/workflows/npm-publish.yml)
+[![Node.js Package](https://github.com/boydaihungst/altair-graphql-plugin-github-sync/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/boydaihungst/altair-graphql-plugin-github-sync/actions/workflows/npm-publish.yml)
 
-[![NPM](https://nodei.co/npm/altair-graphql-plugin-gist-sync.png?compact=true)](https://npmjs.org/package/altair-graphql-plugin-gist-sync)
+[![NPM](https://nodei.co/npm/altair-graphql-plugin-github-sync.png?compact=true)](https://npmjs.org/package/altair-graphql-plugin-github-sync)
 
 This is a plugin for [Altair Graphql Client](https://altair.sirmuel.design) that allows users sync collections with gist of GitHub.
 
 ## Installation
 
-Install the `altair-graphql-plugin-gist-sync` plugin from Avaiable Plugins > Altair Sync Gist > "Add To Altair" > Then Restart
+Install the `altair-graphql-plugin-github-sync` plugin from Avaiable Plugins > Altair Github Sync > "Add To Altair" > Then Restart
 
 ## Configure
 
@@ -30,7 +30,7 @@ Install the `altair-graphql-plugin-gist-sync` plugin from Avaiable Plugins > Alt
 1. Download and Open the Altair GraphQL Client
 2. Open the settings modal
 3. Toggle "ON" the "Enable experimental features in Altair. Note: The features might be unstable"
-4. Add "url:altair-graphql-plugin-gist-sync@1.0.0::[url]->[http://localhost:8002]" to the plugins list and hit "Save" at the bottom of the settings modal
+4. Add "url:altair-graphql-plugin-github-sync@1.0.0::[url]->[http://localhost:8002]" to the plugins list and hit "Save" at the bottom of the settings modal
 5. After refresh Gist Sync panel will show in the left
 
 ## Credit
