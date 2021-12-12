@@ -4,9 +4,12 @@
   "version": "1.0.0",
   "private": false,
   "license": "MIT",
-  "homepage": "https://github.com/boydaihungst/altair-graphql-plugin-gist-sync-import",
+  "homepage": "https://github.com/boydaihungst/altair-graphql-plugin-gist-sync",
   "repository": {
-    "url": "https://github.com/boydaihungst/altair-graphql-plugin-gist-sync-import"
+    "url": "https://github.com/boydaihungst/altair-graphql-plugin-gist-sync"
+  },
+  "bugs": {
+    "url": ""
   },
   "scripts": {
     "serve": "vue-cli-service serve",
