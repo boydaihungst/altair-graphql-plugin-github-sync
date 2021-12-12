@@ -21,4 +21,4 @@ jobs:
           cache-dependency-path: '**/yarn.lock'
       - run: yarn
       - run: yarn lint
-      - run: build:element
+      - run: yarn build:element
