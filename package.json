@@ -1,7 +1,7 @@
 {
   "name": "altair-graphql-plugin-gist-sync",
   "description": "Altair Sync Gist plugin",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "license": "MIT",
   "homepage": "https://github.com/boydaihungst/altair-graphql-plugin-gist-sync",
@@ -16,7 +16,7 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "build:element": "vue-cli-service build --target wc --inline-vue --name altair-graphql-plugin-gist-sync-element src/index.ts",
+    "build:element": "vue-cli-service build --target wc --inline-vue --name altair-graphql-plugin-gist-sync-element src/index.ts && cp -f src/assets/style.css dist/style.css",
     "web-server": "http-server ./ -p 8002 -c-1 --cors",
     "postinstall": "husky install",
     "prepublishOnly": "pinst --disable",

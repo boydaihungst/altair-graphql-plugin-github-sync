@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Altair Sync Gist",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "display_name": "Altair gist sync",
   "description": "Save altair collections to gist",
   "author_email": "boydaihungst@gmail.com",
@@ -11,6 +11,6 @@
     "dist/altair-graphql-plugin-gist-sync-element.min.js"
   ],
   "styles": [
-    "src/assets/style.css"
+    "dist/style.css"
   ]
 }
