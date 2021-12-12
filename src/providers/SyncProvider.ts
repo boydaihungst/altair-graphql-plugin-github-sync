@@ -88,21 +88,13 @@ abstract class SyncProvider {
     }
     // Restore app state: window
     if (data.appState && data.appState.length > 0) {
-      // Keep app settings
-      const appSettings = await this.altairContext.db.appState
-        .where('key')
-        .equals('[altair_]::settings')
-        .first();
-      await this.altairContext.db.appState.clear();
-      if (appSettings) await this.altairContext.db.appState.add(appSettings);
       // Restore windowId for selectedFiles and inputed variables
-      await this.altairContext.db.appState.bulkAdd(data.appState);
+      await this.altairContext.db.appState.bulkPut(data.appState);
     }
     // Restore selected files
     if (data.selectedFiles && data.selectedFiles.length > 0) {
-      await this.altairContext.db.selectedFiles.clear();
       // Restore selectedFiles
-      await this.altairContext.db.selectedFiles.bulkAdd(data.selectedFiles);
+      await this.altairContext.db.selectedFiles.bulkPut(data.selectedFiles);
     }
   }
 

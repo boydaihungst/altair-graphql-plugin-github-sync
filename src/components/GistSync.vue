@@ -116,7 +116,7 @@ export default Vue.extend({
         this.isPulling = false;
       }
     },
-    onError(error: AxiosError) {
+    onError(error: any) {
       let errorMsg = 'API key is wrong or expired';
       if (error.response) {
         const statusCode = error.response.status;

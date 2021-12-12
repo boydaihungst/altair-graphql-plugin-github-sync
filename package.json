@@ -1,7 +1,7 @@
 {
   "name": "altair-graphql-plugin-github-sync",
   "description": "Altair Sync Gist plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "license": "MIT",
   "homepage": "https://github.com/boydaihungst/altair-graphql-plugin-github-sync",
