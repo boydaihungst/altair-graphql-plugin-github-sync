@@ -1,81 +1,59 @@
 {
-  "name": "insomnia-plugin-gist-sync",
-  "version": "0.3.6",
-  "author": "João Miguel Ströher <joao.stroher@gmail.com>",
-  "description": "Gist Sync Plugin for Insomnia",
+  "name": "altair-graphql-plugin-gist-sync",
+  "description": "Altair Sync Gist plugin",
+  "version": "1.0.0",
+  "private": false,
   "license": "MIT",
-  "repository": "https://github.com/joaostroher/insomnia-plugin-gist-sync",
-  "keywords": [
-    "insomnia",
-    "plugin",
-    "gist"
-  ],
-  "bugs": {
-    "url": "https://github.com/joaostroher/insomnia-plugin-gist-sync/issues"
+  "homepage": "https://github.com/boydaihungst/altair-graphql-plugin-gist-sync-import",
+  "repository": {
+    "url": "https://github.com/boydaihungst/altair-graphql-plugin-gist-sync-import"
   },
   "scripts": {
-    "build": "babel src --extensions \".ts,.js,.tsx\" --out-dir dist",
-    "watch": "yarn build --watch",
-    "release": "standard-version",
-    "commit": "cz"
-  },
-  "main": "dist/index.js",
-  "insomnia": {
-    "name": "gist-sync",
-    "displayName": "Gist Sync",
-    "description": "That plugin allows users sync workspaces with gist of GitHub.",
-    "images": {
-      "icon": "icon.svg"
-    },
-    "applications": {
-      "core": "*"
-    }
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint",
+    "build:element": "vue-cli-service build --target wc --inline-vue --name altair-graphql-plugin-gist-sync-element src/index.ts",
+    "web-server": "http-server ./ -p 8002 -c-1 --cors"
   },
   "dependencies": {
     "@emotion/core": "^10.0.35",
+    "@types/uuid": "^8.3.3",
+    "@vue/web-component-wrapper": "^1.2.0",
     "axios": "^0.21.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "dexie": "^3.2.0",
+    "lodash": "^4.17.21",
+    "uuid": "^8.3.2",
+    "vue": "^2.6.10",
+    "vue-inline-svg": "^2.1.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.3",
-    "@babel/core": "^7.10.3",
-    "@babel/node": "^7.10.3",
-    "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "@babel/preset-env": "^7.10.3",
-    "@babel/preset-react": "^7.10.1",
-    "@babel/preset-typescript": "^7.10.1",
-    "@commitlint/cli": "^12.1.1",
-    "@commitlint/config-conventional": "^12.1.1",
-    "@emotion/babel-preset-css-prop": "^10.0.27",
-    "@types/react": "^16.9.41",
-    "@types/react-dom": "^16.9.8",
+    "@types/jest": "^24.0.11",
+    "@types/lodash": "^4.14.178",
     "@typescript-eslint/eslint-plugin": "^3.4.0",
     "@typescript-eslint/parser": "^3.4.0",
-    "commitizen": "^4.2.4",
-    "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^7.3.1",
-    "eslint-config-airbnb": "^18.2.0",
+    "@vue/cli-plugin-babel": "^4.0.0",
+    "@vue/cli-plugin-eslint": "^4.0.0",
+    "@vue/cli-plugin-typescript": "^4.0.0",
+    "@vue/cli-plugin-unit-jest": "^4.0.0",
+    "@vue/cli-service": "^4.0.0",
+    "@vue/eslint-config-prettier": "^5.0.0",
+    "@vue/eslint-config-typescript": "^4.0.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "altair-graphql-core": "^4.2.1",
+    "esbuild": "^0.14.2",
+    "eslint": "^5.16.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-import-resolver-typescript": "^2.0.0",
     "eslint-plugin-import": "^2.21.2",
-    "eslint-plugin-jsx-a11y": "^6.3.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "^4",
-    "husky": "^6.0.0",
-    "prettier": "^2.0.5",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-vue": "^5.0.0",
+    "http-server": "^0.11.1",
+    "prettier": "^1.18.2",
+    "sass": "^1.45.0",
+    "sass-loader": "^10",
     "standard-version": "^9.3.0",
-    "typescript": "^3.9.5"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+    "typescript": "~3.5.3",
+    "vue-template-compiler": "^2.6.10"
   }
 }

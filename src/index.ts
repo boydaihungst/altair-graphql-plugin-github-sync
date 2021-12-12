@@ -1,42 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { AltairPanelLocation } from 'altair-graphql-core/build/plugin/panel';
+import { PluginBase } from 'altair-graphql-core/build/plugin/base';
+import GistSync from './components/GistSync.vue';
+import { AltairContext } from '@/@types/altair';
+import { StorageService } from '@/providers/StorageService';
 
-import Configuration from './components/Configuration';
-import SyncProviderFactory, {
-  SyncProviders,
-} from './providers/SyncProviderFactory';
+// https://altair.sirmuel.design/docs/plugins/writing-plugin.html
+class AltairGistSync extends PluginBase {
+  initialize(ctx: AltairContext) {
+    ctx.events.on('app-ready', () => {
+      ctx.db = new StorageService();
+      const div = document.createElement('div');
+      const gistSyncComp = new GistSync({
+        propsData: {
+          context: ctx,
+        },
+      }).$mount();
 
-const workspaceActions: IInsomniaWorkspaceAction[] = [
-  {
-    label: 'Gist Sync - Send',
-    icon: 'fa-upload',
-    action: async (context, _) => {
-      const factory = new SyncProviderFactory(context);
-      const provider = factory.getProvider(SyncProviders.GitHub);
-      provider.send();
-    },
-  },
-  {
-    label: 'Gist Sync - Receive',
-    icon: 'fa-download',
-    action: async (context, _) => {
-      const factory = new SyncProviderFactory(context);
-      const provider = factory.getProvider(SyncProviders.GitHub);
-      provider.receive();
-    },
-  },
-  {
-    label: 'Sync - Configuration',
-    icon: 'fa-cogs',
-    action: (context, _): void => {
-      const root = document.createElement('div');
-      ReactDOM.render(
-        React.createElement(Configuration, { insomniaContext: context }),
-        root,
-      );
-      context.app.dialog('Sync - Configuration', root);
-    },
-  },
-];
+      ctx.app.createPanel(div, {
+        location: AltairPanelLocation.SIDEBAR,
+        title: 'Gist sync',
+      });
 
-export { workspaceActions };
+      // for some reason, specidying the div in $mount didnt work, so using DOM APIs instead
+      div.appendChild(gistSyncComp.$el);
+    });
+  }
+
+  destroy() {}
+}
+
+(window as any)['AltairGraphQL'].plugins['AltairGistSync'] = AltairGistSync;

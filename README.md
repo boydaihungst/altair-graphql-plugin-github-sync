@@ -1,26 +1,35 @@
-# Insomnia Gist Sync
+# Altair Graphql Client Gist Sync
 
-This is a plugin for [Insomnia](https://insomnia.rest) that allows users sync workspaces with gist of GitHub.
+This is a plugin for [Altair Graphql Client](https://altair.sirmuel.design) that allows users sync collections with gist of GitHub.
 
 ## Installation
 
-Install the `insomnia-plugin-gist-sync` plugin from Preferences > Plugins.
+Install the `altair-graphql-plugin-gist-sync` plugin from Avaiable Plugins > Altair Sync Gist > "Add To Altair" > Then Restart
 
 ## Configure
 
-1. Create a [personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) to your GitHub account, with `gist` scope/permission.
+1. Create a [personal access token](https://github.com/settings/tokens) to your GitHub account, with `gist` scope/permission.
 
-2. Go to Insomnia, click on Insomnia Main Menu, and click on "Gist Sync - Configure":
-
+2. Go to Altair Graphql Client, click on Gist Sync tab:
 ![Plugin Screenshot](/docs/screenshot.jpg)
 
-3. Filling with GitHub API Key (generated on step 1), select a existent Gist or select "Create new..." to create a new Gist.
+3. Filling with Gist API Key (generated on step 1), select a existent Gist or select "Create new..." to create a new Gist.
 
 ![Configuration Plugin Screenshot](/docs/screenshot-configuration.png)
 
 ## Usage
 
-- Click on "Gist Sync - Send" to send your workspaces to Gist.
-- Click on "Gist Sync - Receive" to get your workspaces from Gist.
+- Click on "Upload" to send your collections to Gist.
+- Click on "Donwload" to get your collections from Gist.
 
-> Note that currently using the same Gist on more than one computer can result in problems. When the "Receive" button is pressed, all remote content is combined with local content by Insomnia. If you are really interested on preserving integrity working with a team, please [support insomnia](https://insomnia.rest/pricing/) with a team membership.
+## For developer only
+
+1. Download and Open the Altair GraphQL Client
+2. Open the settings modal
+3. Toggle "ON" the "Enable experimental features in Altair. Note: The features might be unstable"
+4. Add "url:altair-graphql-plugin-gist-sync@1.0.0::[url]->[http://localhost:8002]" to the plugins list and hit "Save" at the bottom of the settings modal
+5. After refresh Gist Sync panel will show in the left
+
+## Credit
+
+- This is a port from [joaostroher/insomnia-plugin-gist-sync](https://github.com/joaostroher/insomnia-plugin-gist-sync).

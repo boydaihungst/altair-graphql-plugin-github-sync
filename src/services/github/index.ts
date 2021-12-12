@@ -8,7 +8,7 @@ interface IGistFile {
 }
 
 interface IGistFiles {
-  'insomnia_data.json': IGistFile;
+  'altair_data.json': IGistFile;
 }
 
 interface IGist {
@@ -23,15 +23,20 @@ class GitHubService {
   constructor(token: string) {
     this.api = axios.create({
       baseURL: 'https://api.github.com/',
-      headers: { Authorization: `Bearer ${token}` },
+      headers: { Authorization: `Bearer ${token.trim()}` },
+    });
+  }
+
+  updateAuthToken(newToken: string) {
+    this.api = axios.create({
+      baseURL: 'https://api.github.com/',
+      headers: { Authorization: `Bearer ${newToken.trim()}` },
     });
   }
 
   async getGists(): Promise<IGist[]> {
     const response = await this.api.get<IGist[]>('/gists');
-    const gists = response.data.filter(
-      gist => gist.files['insomnia_data.json'],
-    );
+    const gists = response.data.filter(gist => gist.files['altair_data.json']);
     return gists;
   }
 
@@ -48,11 +53,11 @@ class GitHubService {
   async createGist(content: string): Promise<IGist> {
     const response = await this.api.post<IGist>('/gists', {
       files: {
-        'insomnia_data.json': {
+        'altair_data.json': {
           content,
         },
       },
-      description: 'Insomnia Sync Data',
+      description: 'altair Sync Data',
       public: false,
     });
     return response.data;
@@ -61,7 +66,7 @@ class GitHubService {
   async updateGist(gistId: string, content: string): Promise<IGist> {
     const response = await this.api.patch<IGist>(`/gists/${gistId}`, {
       files: {
-        'insomnia_data.json': {
+        'altair_data.json': {
           content,
         },
       },
