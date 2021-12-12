@@ -22,15 +22,15 @@ Install the `altair-graphql-plugin-github-sync` plugin from Avaiable Plugins > A
 
 ## Usage
 
-- Click on "Upload" to send your collections to Gist.
-- Click on "Donwload" to get your collections from Gist.
+- Click on "Upload" to send your collections, app settings, environment to Gist.
+- Click on "Donwload" to get your collections, app settings, environment from Gist.
 
 ## For developer only
 
 1. Download and Open the Altair GraphQL Client
 2. Open the settings modal
 3. Toggle "ON" the "Enable experimental features in Altair. Note: The features might be unstable"
-4. Add "url:altair-graphql-plugin-github-sync@1.0.0::[url]->[http://localhost:8002]" to the plugins list and hit "Save" at the bottom of the settings modal
+4. Add "url:altair-graphql-plugin-github-sync@1.0.1::[url]->[http://localhost:8002]" to the plugins list and hit "Save" at the bottom of the settings modal
 5. After refresh Gist Sync panel will show in the left
 
 ## Credit

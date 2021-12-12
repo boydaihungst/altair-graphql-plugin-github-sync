@@ -4,6 +4,7 @@ import { IQueryCollection } from './StorageService';
 import merge from 'lodash/merge';
 import values from 'lodash/values';
 import keyBy from 'lodash/keyBy';
+import { STORE_KEY_API_KEY } from '@/constant/gist-provider.enum';
 abstract class SyncProvider {
   private altairContext: AltairContext;
 
@@ -18,12 +19,12 @@ abstract class SyncProvider {
    * @returns
    */
   mergeQueriesOfCollection(oldQueries: any[], newQueries: any[]) {
+    const now = this.altairContext.db.now();
     const mergedQueries = values(
-      merge(
-        keyBy(oldQueries, o => o.id),
-        keyBy(newQueries, o => o.id),
-      ),
-    );
+      merge(keyBy(oldQueries, 'id'), keyBy(newQueries, 'id')),
+    ).map(query => {
+      return { ...query, created_at: now, updated_at: now };
+    });
     return mergedQueries;
   }
 
@@ -31,7 +32,7 @@ abstract class SyncProvider {
     const now = this.altairContext.db.now();
 
     collection.queries = collection.queries.map(query => {
-      return { ...query, id: uuid(), created_at: now, updated_at: now };
+      return { ...query, created_at: now, updated_at: now };
     });
     return this.altairContext.db.queryCollections.add({
       ...collection,
@@ -41,18 +42,19 @@ abstract class SyncProvider {
   }
 
   protected async updateCollection(
-    collectionTitle: string,
-    modifiedCollection: IQueryCollection,
+    oldCollection: IQueryCollection,
+    newCollection: IQueryCollection,
   ) {
-    return this.altairContext.db.queryCollections
-      .where('title')
-      .equals(collectionTitle)
-      .modify((oldCollection, ctx) => {
-        modifiedCollection.queries = this.mergeQueriesOfCollection(
-          oldCollection.queries,
-          modifiedCollection.queries,
-        );
-        ctx.value = modifiedCollection;
+    if (!oldCollection.id) return null;
+    const mergedQueries = this.mergeQueriesOfCollection(
+      oldCollection.queries,
+      newCollection.queries,
+    );
+    return await this.altairContext.db.queryCollections
+      .where('id')
+      .equals(oldCollection.id)
+      .modify({
+        queries: mergedQueries,
       });
   }
 
@@ -65,6 +67,7 @@ abstract class SyncProvider {
     if (data.localStorage) {
       // Restore localStorage
       Object.keys(data.localStorage).forEach(key => {
+        if (key === STORE_KEY_API_KEY) return;
         localStorage.setItem(key, data.localStorage[key]);
       });
     }
@@ -77,10 +80,7 @@ abstract class SyncProvider {
         .first();
       // Update old one with new one
       if (oldCollection) {
-        await this.updateCollection(
-          collection.title,
-          merge(oldCollection, collection),
-        );
+        await this.updateCollection(oldCollection, collection);
         continue;
       }
       // Create if not exist
@@ -101,10 +101,6 @@ abstract class SyncProvider {
   protected async exportFromAltair(): Promise<string> {
     const altairCollections = await this.altairContext.db.queryCollections.toArray();
     const altairAppState = await this.altairContext.db.appState.toArray();
-    // Prevent save app settings
-    altairAppState.splice(
-      altairAppState.findIndex(item => item.key === '[altair_]::settings'),
-    );
     const altairsSlectedFiles = await this.altairContext.db.selectedFiles.toArray();
 
     const data: AltairData = {
