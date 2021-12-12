@@ -9,6 +9,7 @@ import {
 } from '../constant/gist-provider.enum';
 import SyncProviderFactory from '../providers/SyncProviderFactory';
 import GitHubService from '../services/github';
+import { AxiosError } from 'axios';
 
 export interface ISelectOption {
   label: string;
@@ -94,8 +95,8 @@ export default Vue.extend({
           await provider.send();
           this.modelText = `Upload successful!`;
         }
-      } catch (err) {
-        this.modelText = err.message;
+      } catch (error) {
+        this.onError(error);
       } finally {
         this.isPushing = false;
       }
@@ -109,11 +110,39 @@ export default Vue.extend({
           await provider.receive();
           this.modelText = `Download successful! Press F5 to refresh!`;
         }
-      } catch (err) {
-        this.modelText = err.message;
+      } catch (error) {
+        this.onError(error);
       } finally {
         this.isPulling = false;
       }
+    },
+    onError(error: AxiosError) {
+      let errorMsg = 'API key is wrong or expired';
+      if (error.response) {
+        const statusCode = error.response.status;
+        switch (statusCode) {
+          case 401:
+            errorMsg = 'API key is wrong or expired!';
+            break;
+
+          case 403:
+            errorMsg = 'Access denied!';
+            break;
+
+          case 404:
+            errorMsg = "The selected Gist doesn's exist or deleted";
+            break;
+
+          default:
+            errorMsg = 'Please check your internet connection!';
+            break;
+        }
+      } else if (error.request) {
+        errorMsg = 'May be gist server down?!?';
+      } else {
+        errorMsg = error.message;
+      }
+      this.modelText = errorMsg;
     },
   },
   async mounted() {
@@ -150,7 +179,7 @@ export default Vue.extend({
     <div class="gist-sync__gist-key">
       <label for="gistKey">Gist </label>
       <select id="gistKey" v-model="gistKey" :disabled="isFetchingGist">
-        <option :value="null">
+        <option value="">
           Create new...
         </option>
         <option
