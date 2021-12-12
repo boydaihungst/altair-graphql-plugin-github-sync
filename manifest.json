@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "Altair Sync Gist",
-  "version": "1.0.3",
-  "display_name": "Altair gist sync",
+  "name": "altair-graphql-plugin-gist-sync",
+  "version": "1.0.0",
+  "display_name": "Altair Gist Sync",
   "description": "Save altair collections to gist",
   "author_email": "boydaihungst@gmail.com",
   "author": "Huy Hoang",
