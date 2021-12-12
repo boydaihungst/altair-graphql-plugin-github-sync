@@ -29,7 +29,6 @@ jobs:
         with:
           node-version: 12
           cache: 'yarn'
-          cache-dependency-path: '**/yarn.lock'
           registry-url: https://registry.npmjs.org/
       - run: yarn
       - run: yarn build:element
