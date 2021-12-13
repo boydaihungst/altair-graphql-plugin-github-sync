@@ -1,7 +1,7 @@
 import SyncProvider from './SyncProvider';
 import GitHubSyncProvider from './GitHubSyncProvider';
 import { AltairContext } from '../@types/altair';
-import { SyncProviders } from '../constant/gist-provider.enum';
+import { SyncProviders } from '../constant/common.enum';
 class SyncProviderFactory {
   constructor(private altairContext: AltairContext) {}
 

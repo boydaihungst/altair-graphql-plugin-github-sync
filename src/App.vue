@@ -1,31 +1,51 @@
 <template>
   <div id="app">
-    <GistSync :props="{}" />
+    <GistSync :context="context" />
   </div>
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { defineComponent, PropType } from 'vue';
 import GistSync from './components/GistSync.vue';
+import { AltairContext } from './@types/altair';
 
-export default Vue.extend({
-  name: 'app',
+export default defineComponent({
+  name: 'App',
   components: {
     GistSync,
   },
-  async mounted() {
-    await import('./components/GistSync.vue');
+  props: {
+    context: {
+      type: Object as PropType<AltairContext>,
+      default: null
+    },
   },
+  // async mounted() {
+  //   await import('./components/GistSync.vue');
+  // },
 });
 </script>
 
 <style lang="scss">
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer utilities {
+  .bg-theme {
+    background-color: var(--theme-bg-color);
+  }
+  .text-theme {
+    color: var(--theme-font-color);
+  }
+  .text-indigo-500 {
+    color: var(--primary-color);
+  }
+}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

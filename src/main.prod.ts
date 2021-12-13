@@ -4,10 +4,10 @@ import 'tailwindcss/tailwind.css';
 import { createApp } from 'vue';
 import { AltairContext } from './@types/altair';
 import App from './App.vue';
+import GistSync from './components/GistSync.vue';
 import { StorageService } from './providers/StorageService';
-if (import.meta.env.MODE === 'development') {
-  createApp(App).mount('#app');
-}
+
+createApp(App).mount('#app');
 
 // https://altair.sirmuel.design/docs/plugins/writing-plugin.html
 class AltairGistSync extends PluginBase {
@@ -16,7 +16,7 @@ class AltairGistSync extends PluginBase {
       ctx.db = new StorageService();
       const div = document.createElement('div');
       div.id = 'app';
-      createApp(App, {
+      createApp(GistSync, {
         context: ctx,
       }).mount(div);
 

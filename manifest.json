@@ -1,16 +1,12 @@
 {
   "manifest_version": 2,
   "name": "altair-graphql-plugin-github-sync",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "display_name": "Altair Github Sync",
   "description": "Save altair collections to github gist",
   "author_email": "boydaihungst@gmail.com",
   "author": "Huy Hoang",
   "plugin_class": "AltairGistSync",
-  "scripts": [
-    "dist/altair-graphql-plugin-github-sync-element.min.js"
-  ],
-  "styles": [
-    "dist/style.css"
-  ]
+  "scripts": ["dist/github-sync.umd.js"],
+  "styles": ["dist/style.css"]
 }
