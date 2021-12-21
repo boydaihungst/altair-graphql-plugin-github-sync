@@ -1,6 +1,6 @@
 {
   "name": "altair-graphql-plugin-github-sync",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": false,
   "description": "Altair Sync Gist plugin",
   "scripts": {
@@ -76,5 +76,36 @@
   "license": "MIT",
   "repository": {
     "url": "https://github.com/boydaihungst/altair-graphql-plugin-github-sync"
-  }
+  },
+  "author": {
+    "email": "boydaihungst@gmail.com",
+    "name": "Huy Hoang",
+    "url": "https://github.com/boydaihungst"
+  },
+  "badges": [],
+  "categories": [
+    "Other"
+  ],
+  "contributors": [
+    {
+      "url": "https://github.com/joaostroher",
+      "name": "João Miguel Ströher"
+    },
+    {
+      "name": "Teo Gonzalez",
+      "url": "https://github.com/thblckjkr"
+    },
+    {
+      "email": "boydaihungst@gmail.com",
+      "name": "Huy Hoang",
+      "url": "https://github.com/boydaihungst"
+    }
+  ],
+  "keywords": [
+    "gist",
+    "sync",
+    "altair",
+    "graphql",
+    "plugin"
+  ]
 }
