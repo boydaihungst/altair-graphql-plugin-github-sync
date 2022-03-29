@@ -30,7 +30,7 @@ Install the `altair-graphql-plugin-github-sync` plugin from Avaiable Plugins > A
 1. Download and Open the Altair GraphQL Client
 2. Open the settings modal
 3. Toggle "ON" the "Enable experimental features in Altair. Note: The features might be unstable"
-4. Add "url:altair-graphql-plugin-github-sync@1.0.2::[url]->[http://localhost:8002]" to the plugins list and hit "Save" at the bottom of the settings modal
+4. Add "url:altair-graphql-plugin-github-sync@1.0.5::[url]->[http://localhost:8002]" to the plugins list and hit "Save" at the bottom of the settings modal
 5. Run `yarn preview` to build in watch mode and open http server
 6. After refresh Gist Sync panel will show in the left
 

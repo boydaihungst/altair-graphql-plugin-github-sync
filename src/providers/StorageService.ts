@@ -24,14 +24,20 @@ export class StorageService extends Dexie {
 
   selectedFiles!: Dexie.Table<ISelectedFile, string>;
 
+  /**
+   *
+   * @param databaseVersion https://github.com/altair-graphql/altair/blob/master/packages/altair-app/src/app/modules/altair/services/storage/storage.service.ts
+   */
+  dexieSchemaVersion = 4;
+
   constructor() {
     super('AltairDB');
-    this.schema();
+    this.schema(this.dexieSchemaVersion);
   }
 
-  schema() {
-    this.version(3).stores({
-      queryCollections: '++id, title',
+  schema(databaseVersion: number) {
+    this.version(databaseVersion).stores({
+      queryCollections: '++id, title, parentPath',
       appState: 'key',
       selectedFiles: 'id, windowId',
     });
