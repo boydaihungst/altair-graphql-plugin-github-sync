@@ -28,8 +28,12 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - run: yarn
-      - run: yarn build
-      - run: yarn publish
+      - run: |
+          yarn
+          yarn build
+          yarn publish
+          chmod +x "${GITHUB_WORKSPACE}/scripts/purge-cache.sh"
+          "${GITHUB_WORKSPACE}/scripts/purge-cache.sh"
+
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
