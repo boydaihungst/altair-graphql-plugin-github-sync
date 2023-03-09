@@ -28,7 +28,7 @@ export class StorageService extends Dexie {
    *
    * @param databaseVersion https://github.com/altair-graphql/altair/blob/master/packages/altair-app/src/app/modules/altair/services/storage/storage.service.ts
    */
-  dexieSchemaVersion = 4;
+  dexieSchemaVersion = 5;
 
   constructor() {
     super('AltairDB');
@@ -40,6 +40,7 @@ export class StorageService extends Dexie {
       queryCollections: '++id, title, parentPath',
       appState: 'key',
       selectedFiles: 'id, windowId',
+      localActionLogs: '++id',
     });
   }
 
